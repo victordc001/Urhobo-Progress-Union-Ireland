@@ -77,10 +77,11 @@ import bcrypt from 'bcryptjs';
          default : 0,
     },
 
-      date : {
-               type : Date,
-               default : Date.now(),
-      },
+    date: {
+        type: Date,
+        default: () => Date.now(), // Ensures the date is set when a new document is created
+    }
+    
   
 
  });   
