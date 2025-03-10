@@ -93,8 +93,9 @@
 									<div class="button">
 										 <% if(!user) { %> 
 											<a href="/registration" class="btn">Join Us</a>
-										 <% } %>	
-										<a href="/registration" class="btn primary">Learn More</a>
+										 <% } %>	 
+										 <a id="donate" href="#" class="btn primary">Donate</a>
+										
 									</div>
 								</div>
 							</div>
@@ -116,10 +117,10 @@
 										<% if(!user) { %> 
 											<a href="/registration" class="btn">Get Involved</a> 
 										 <% } %>	
-										<a href="/about" class="btn primary">About UPUI</a>
+										 <a href="/about" class="btn primary">Learn More</a>
 									</div>
 								</div>
-							</div>
+							</div>   
 						</div>
 					</div>
 				</div>
@@ -146,14 +147,23 @@
 				</div>
 				<!-- End Single Slider -->
 			</div>
-		</section>
-		
-		<!-- Slider Area -->
-		
-		<!--/ End Slider Area --> 
+		</section> 
 
-		
-		
+		     <!-- Donation Modal -->   
+			 <div id="donationModal" class="modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); animation: fadeIn 0.3s ease-in-out;">
+				<div class="modal-content" style="background: white; padding: 20px; margin: 10% auto; width: 40%; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); transform: scale(0.9); animation: popUp 0.3s ease-in-out forwards;">
+					<span class="close" style="float: right; font-size: 24px; cursor: pointer;">&times;</span>
+					<h2>Support Us with Your Donation</h2>
+					<p>Every contribution helps us grow and make a difference.</p>
+					<p style="font-size: 18px; font-weight: bold; text-align: center; margin-top: 20px;">URHOBO PROGRESS UNION IRELAND</p>
+					<p style="font-size: 18px; font-weight: bold; text-align: center;">BANK OF IRELAND</p>
+					<p style="font-size: 18px; font-weight: bold; text-align: center;">IBAN: <span style="color: #008080;">IE63BOFI90123956104693</span></p>
+				</div>
+			</div>
+			
+					<!-----Donation modal end -->
+
+
 		<!-- Start Schedule Area -->
 		<section class="schedule">
 			<div class="container">
@@ -855,7 +865,39 @@
 						document.getElementById("cookie-popup").style.display = "flex";
 					}
 				}, 5000);
-			}
+			} 
+
+
+
+
+
+
+
+
+			document.addEventListener("DOMContentLoaded", function() {
+    var donateButton = document.getElementById('donate');
+    if (donateButton) { 
+		donateButton.preventDefault();
+        donateButton.addEventListener('click', function() {
+            document.getElementById('donationModal').style.display = 'block';
+        });
+    }
+
+    var closeButton = document.querySelector('.close');
+    if (closeButton) {
+        closeButton.addEventListener('click', function() {
+            document.getElementById('donationModal').style.display = 'none';
+        });
+    }
+
+    window.onclick = function(event) {
+        if (event.target === document.getElementById('donationModal')) {
+            document.getElementById('donationModal').style.display = 'none';
+        }
+    };
+});  
+        
+
 		</script>
 
 	</body>
