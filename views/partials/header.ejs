@@ -1,0 +1,163 @@
+
+<header class="header">
+	<!-- Topbar -->
+	<div class="topbar">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-5 col-12">
+					<!-- Contact -->
+					<ul class="top-link">
+						<li><a href="/about ">About Us</a></li>
+						<li><a href="/meet_the_executives">Meet the Executives</a></li>
+						<li><a href="/contact ">Contact</a></li> 
+						<li><a href="/gallery">Gallery</a></li> 
+					</ul>
+					<!-- End Contact -->
+				</div>
+				<div class="col-lg-6 col-md-7 col-12">
+					<!-- Top Contact -->
+					<ul class="top-contact">
+						<li><i class="fa fa-phone"></i>+353 872501054</li>
+					  </ul>
+					<!-- End Top Contact -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Topbar -->
+
+	<!-- Header Inner -->
+	<div class="header-inner">
+		<div class="container">
+			<div class="inner">
+				<div class="row">
+					<div class="col-lg-3 col-md-3 col-12">
+						<!-- Start Logo -->
+						<div class="dlogo">
+                            <img src="/img/upuilogo.png" alt="upuilogo">   
+							<div id="mobileonlynav" class="mobile-nav"></div>
+                        </div> 
+						<!-- End Logo -->  
+						 
+						<!-- End Mobile Nav -->
+					</div>
+					<div class="col-lg-7 col-md-9 col-12">
+						<!-- Main Menu -->
+						<div class="main-menu">
+							<nav class="navigation">
+								<ul class="nav menu">
+									<li class="active"><a href="/">Home</a></li>
+									<li><a href="/about ">About Us</a></li>  
+									<li><a href="/urhobo-school">Urhobo Language School</a></li> 
+									<% if(user) { %> 
+										<li><a href="/dashboard">Dashboard</a></li>  
+									<% } else { %>	   
+										<li><a href="/registration">Register</a></li>  
+									<% } %>	 
+									<li><a href="/contact">Contact</a></li>
+								</ul>
+							</nav>
+						</div>
+						<!--/ End Main Menu -->
+					</div>
+					<div class="col-lg-2 col-12">  
+							<div class="get-quote">
+								<a href='#' id="donate" class="btn">Donate Now</a>    
+							</div>   
+					</div> 
+				</div>
+			</div>
+		</div>
+	</div>    
+
+     
+	    <!-- Donation Modal -->   
+		 <div id="donationModal" class="modal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); animation: fadeIn 0.3s ease-in-out;">
+    <div class="modal-content" style="background: white; padding: 20px; margin: 10% auto; width: 40%; border-radius: 10px; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); transform: scale(0.9); animation: popUp 0.3s ease-in-out forwards;">
+        <span class="close" style="float: right; font-size: 24px; cursor: pointer;">&times;</span>
+        <h2>Support Us with Your Donation</h2>
+        <p>Every contribution helps us grow and make a difference.</p>
+        <p style="font-size: 18px; font-weight: bold; text-align: center; margin-top: 20px;">URHOBO PROGRESS UNION IRELAND</p>
+        <p style="font-size: 18px; font-weight: bold; text-align: center;">BANK OF IRELAND</p>
+        <p style="font-size: 18px; font-weight: bold; text-align: center;">IBAN: <span style="color: #008080;">IE63BOFI90123956104693</span></p>
+    </div>
+</div>
+
+        <!-----Donation modal end -->
+
+
+	<!--/ End Header Inner -->
+</header>
+
+  <script>   
+
+	   //donate modal toggle
+	    
+document.addEventListener("DOMContentLoaded", function() {
+    var donateButton = document.getElementById('donate');
+    if (donateButton) {
+        donateButton.addEventListener('click', function() {
+            document.getElementById('donationModal').style.display = 'block';
+        });
+    }
+
+    var closeButton = document.querySelector('.close');
+    if (closeButton) {
+        closeButton.addEventListener('click', function() {
+            document.getElementById('donationModal').style.display = 'none';
+        });
+    }
+
+    window.onclick = function(event) {
+        if (event.target === document.getElementById('donationModal')) {
+            document.getElementById('donationModal').style.display = 'none';
+        }
+    };
+});  
+
+
+
+
+var donateNow = document.getElementById('donationForm');
+	   donateNow.addEventListener('click', async (e)=>{
+        e.preventDefault();   
+		var dbtn = document.getElementById('dbtn');   
+                    dbtn.innerHTML = 'Donating...';
+                    dbtn.style.opacity = '0.855';
+					dbtn.disabled = true;
+     const amount = document.getElementById('amount').value; 
+
+		const donatedata = {
+			 amount : amount,
+		} 
+
+		   try{
+			  const response = await fetch('/donate', {
+				  method : 'post', 
+				  body : JSON.stringify(donatedata),
+				  headers: {
+					 'Content-Type': 'application/json',
+					 Accept: 'application/json',
+				  },
+			  }); 
+
+			  if(!response.ok) {
+				   throw response;
+			  }   
+			    const paymentLinkJson = await response.json();
+				const paymentLink = paymentLinkJson.paymenturl; 
+				setTimeout(()=>{ 
+					window.location.href = paymentLink;
+				}, 3000);
+		   } 
+
+		   catch(err) { 
+			        dbtn.innerHTML = 'Donate Now';
+                    dbtn.style.opacity = '0.855';
+					dbtn.disabled = false;
+			   const error = await err.text();  
+			   alert(error);
+		   }
+	   }); 
+
+  </script>

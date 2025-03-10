@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <%- include('../partials/head.ejs'); %> 
+     <title>UPUI – Verify Your Account</title>  
+<meta name="description" content="Verify your UPUI account to gain access to our community and services. Join us in promoting Urhobo culture and unity.">
+
+<!-- Open Graph Meta Tags for Facebook, LinkedIn, etc. -->
+<meta property="og:title" content="UPUI – Verify Your Account">
+<meta property="og:description" content="Complete your UPUI account verification to connect with the Urhobo community in Ireland.">
+<meta property="og:image" content="https://upuireland.org/img/upuilogo.png">
+<meta property="og:url" content="https://upuireland.org/">
+<meta property="og:type" content="website"> 
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="UPUI – Verify Your Account">
+<meta name="twitter:description" content="Verify your UPUI account to become part of our growing Urhobo community in Ireland.">
+<meta name="twitter:image" content="https://upuireland.org/img/upuilogo.png">
+<meta name="twitter:url" content="https://upuireland.org/">
+
+
+
+  <style>
+     .loginf{
+             min-width:100px;
+             margin-left:20px;
+             margin-right:20px;
+             padding-left:20px;
+             padding-right:20px;
+             margin-top:40px;  
+             text-align:center;   
+             margin-bottom:40px;
+          }      
+
+
+          .loginf i{
+            font-weight:bold;
+            font-size:70px; 
+            color:green;
+            animation-name:verify;
+            animation-duration:0.7s;
+            animation-iteration-count:infinite;
+          }   
+
+          .bigg{
+              margin-top:10px;
+              font-size:18px;
+              font-family:'Poppins', sans-serif;
+          }
+
+          .loginf button{
+               padding:15px;
+               border:none; 
+               color:white;
+               background-color:dodgerblue;
+               margin-top:10px;
+               width:100%; 
+               font-weight:bold;
+               font-size:17px;
+          } 
+
+          @keyframes verify{
+              from{
+                color:black;
+              }   
+
+              to{
+                color:dodgerblue;
+              }
+          }
+
+  </style>
+</head>
+<body>
+     
+   <!-- Header Area -->
+   <%- include('../partials/header.ejs') %>
+   <!-- End Header Area -->
+
+   <!-- Breadcrumbs -->
+   <div class="breadcrumbs overlay">
+       <div class="container">
+           <div class="bread-inner">
+               <div class="row">
+                   <div class="col-12">
+                       <h2>Verify Account</h2>
+                       <ul class="bread-list">
+                           <li><a href="/">Home</a></li>
+                           <li><i class="icofont-simple-right"></i></li>
+                           <li class="active">Verify Account</li>
+                       </ul>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+   <!-- End Breadcrumbs --> 
+
+    <div class="loginf"> 
+        <i class="fa fa-envelope"></i> <br>
+        <p class="bigg"><%=resp%></p>
+         <a href='/' style="text-decoration:none;"><button class="btn" id="sending">Go Home</button></a>
+       </div>  
+
+       <%- include('../partials/footer.ejs'); %>
+ 
+
+</body>
+</html>

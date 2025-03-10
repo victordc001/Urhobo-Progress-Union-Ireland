@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head.ejs') %>    
+    <title>Dashboard | UPUI – Member Portal</title>  
+    <meta name="description" content="Access your UPUI member dashboard to stay updated, manage your profile, and engage with the Urhobo community in Ireland.">  
+    
+    <!-- Open Graph Meta Tags for Facebook, LinkedIn, etc. -->
+    <meta property="og:title" content="Dashboard | Urhobo Progress Union Ireland">
+    <meta property="og:description" content="Log in to your UPUI member dashboard to stay connected with the community and manage your activities.">
+    <meta property="og:image" content="https://upuireland.org/img/upuilogo.png">
+    <meta property="og:url" content="https://upuireland.org/dashboard">
+    <meta property="og:type" content="website">  
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dashboard | Urhobo Progress Union Ireland">
+    <meta name="twitter:description" content="Your personal UPUI member portal – manage your account, stay updated, and engage with the community.">
+    <meta name="twitter:image" content="https://upuireland.org/img/upuilogo.png">
+    <meta name="twitter:url" content="https://upuireland.org/dashboard">
+      
+<!-- Add ?v=timestamp to force reload -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css?v=<%= Date.now() %>">
+ 
+
+      <style>
+           
+           a{
+             text-decoration:none;
+           } 
+      
+
+
+           .profile-picture {
+    position: relative;
+    display: inline-block;
+    width: 150px; /* Set desired width */
+    height: 150px; /* Set desired height */
+    overflow: hidden; /* Prevent image overflow */
+    border-radius: 50%; /* If you want a circular profile picture */
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills the container without distortion */
+    border-radius: inherit; /* Ensures rounded edges apply */
+}
+
+
+.edit-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    color: white;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 8px;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+} 
+
+.uploading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width:50%;
+    height:auto; 
+    display:none;
+}
+
+.profile-picture:hover .edit-icon {
+    opacity: 1;
+}
+
+
+.card {
+    width: 350px;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+    border: none;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.image img {
+    transition: all 0.5s
+}
+
+.card:hover .image img {
+    transform: scale(1.5)
+}
+
+.dashboard .btn {
+    height: 140px;
+    width: 140px;
+    border-radius: 50%
+}
+
+.name {
+    font-size: 22px;
+    font-weight: bold
+}
+
+.idd {
+    font-size: 14px;
+    font-weight: 600
+}
+
+.idd1 {
+    font-size: 12px
+}
+
+.number {
+    font-size: 22px;
+    font-weight: bold
+}
+
+.follow {
+    font-size: 12px;
+    font-weight: 500;
+    color: #444444
+}
+
+.dashboard .btn1 {
+    height: 40px;
+    width: 150px;
+    border: none;
+    background-color:dodgerblue;
+    color:white;
+    font-size: 15px
+}
+
+.text span {
+    font-size: 13px;
+    color: #545454;
+    font-weight: 500
+}
+
+.icons i {
+    font-size: 19px
+}
+
+hr .new1 {
+    border: 1px solid
+}
+ 
+
+.date {
+    background-color: #ccc
+} 
+
+.donation-number {
+    font-size: 20px;  /* Larger, bolder number */
+    font-weight: bold;
+    color: #333; /* Dark color for contrast */
+    margin-right: 5px; /* Space between number and text */
+}
+
+.donation-text {
+    font-size: 16px;  /* Smaller font for 'donations' */
+    font-weight: 500;
+    color: #666; /* Slightly lighter color */
+    text-transform: uppercase;
+}
+    
+      </style>
+</head>
+
+<body>
+
+    <!-- Header Area -->
+    <%- include('../partials/header.ejs') %>
+    <!-- End Header Area -->
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs overlay">
+        <div class="container">
+            <div class="bread-inner">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Dashboard</h2>
+                        <ul class="bread-list">
+                            <li><a href="/">Home</a></li>
+                            <li><i class="icofont-simple-right"></i></li>
+                            <li class="active">Dashboard</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Breadcrumbs --> 
+
+
+  <!-- Bootstrap Modal -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="updatestart">
+                    <div class="mb-3">
+                        <label for="editFirstName" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="editFirstName" value="<%=user.firstname%>">
+                    </div> 
+                    <div class="mb-3">
+                        <label for="editLastName" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="editLastName" value="<%=user.lastname%>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editUsername" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="editUsername" value="<%= user.reguser %>"
+                        />  
+                    </div>
+                    <div class="mb-3">
+                        <label for="editEmail" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="editEmail" value="<%=user.regemail%>">
+                    </div>
+                    <div class="mb-3">
+                        <label for="editPhone" class="form-label">Phone Number</label>
+                        <input type="number" class="form-control" id="editPhone" value="<%=regphonenumb%>">
+                    </div> 
+                    <div class="mb-3">
+                         <p id="erre"></p>
+                    </div> 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" id="saveit">Save Changes</button>
+            </div>
+        </div>
+    </div> 
+</form>
+</div>
+
+<!-- User Dashboard -->
+<div class="container dashboard mt-4 mb-4 p-3 d-flex justify-content-center">
+    <div class="card p-4">
+        <div class="image d-flex flex-column justify-content-center align-items-center">
+            <div class="profile-picture">
+                <button style="background-color:lightgrey;" class="btn position-relative">
+                    <img src="<%= pfp && pfp.path ? pfp.path : 'https://i.imgur.com/wvxPV9S.png' %>" height="auto" width="100%" class="profile-img" />
+                 </button>  
+                 <i class="fa fa-pencil edit-icon" id="editIcon"></i>
+                <img src="/img/uploading.gif" class="uploading" alt="loading"> 
+            </div>
+                 <span class="name mt-3" id="profileName"><%=user.firstname%></span> 
+            <span class="idd" id="profileUsername"><%= user.reguser %></span> 
+            <div class="d-flex flex-row justify-content-center align-items-center mt-1">
+                <span class="emailaddr" id="profileEmail"><%=user.regemail%></span>
+            </div> 
+            <div class="d-flex flex-row justify-content-center align-items-center mt-1">
+                 <span style="font-size:15px" class="member-text">Member Since : </span>
+                 <span style="padding-left:3px;" class="member-year"><strong><%=dateJoined.getFullYear()%></strong></span>
+            </div>
+              
+            <!--<div class="d-flex flex-row justify-content-center align-items-center mt-1"> 
+                <% if(donations && donationCount > 0) { %>
+                    <span style="color:dodgerblue" class="donation-number"> <%=donationCount%> </span>
+                    <span class="donation-text">donations</span>
+               <% } else { %>
+                <span class="donation-number">0</span>
+                <span class="donation-text">donations</span>
+              <% } %>  
+            </div>--->
+            
+            <div class="d-flex mt-2">
+                <button class="btn1 btn-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</button>
+            </div>
+            <div class="text mt-3">
+                <span>
+                    Welcome to your URHBO profile! Stay connected, explore new opportunities, and engage with a growing community. <br><br>
+                    Keep your profile updated to unlock the best personalized experiences and interactions within the platform.
+                </span>
+            </div>
+        </div>
+    </div> 
+</div>  
+<input type="file" id="profilePictureInput" hidden/> 
+
+<%- include('../partials/footer.ejs') %> 
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js?v=<%= Date.now() %>"></script>
+  
+<!-- JavaScript for Updating Profile -->
+<script>   
+
+   // Trigger file input on edit icon click  
+   var editicon = document.getElementById('editIcon');  
+   editicon.onclick = function () {    
+        const afile = document.getElementById('profilePictureInput');
+        afile.click(); // Trigger the file input
+    }; 
+
+
+// Listen for file selection
+document.getElementById('profilePictureInput').addEventListener('change', async function() {
+    const afile = this;
+    const chosenfile = afile.files[0];
+
+    if (chosenfile) {
+        const uploading = document.querySelector('.uploading');   
+        var profileImg = document.querySelector('.profile-img');
+        uploading.style.display = 'block'; 
+        profileImg.style.opacity = 0.3;
+        document.getElementById('editIcon').style.display = 'none'; // Hide edit icon
+
+        try {
+            const newfile = new FormData();
+            newfile.append('profilePicture', chosenfile); // Append file with key 'profilePicture'
+            
+            const resp = await fetch('/upldpfp', {
+                method: 'POST',
+                body: newfile,
+            });
+
+            if (!resp.ok) {
+                throw resp;
+            }
+            
+             setTimeout(()=>{ 
+                uploading.style.display = 'none'; // Hide uploading indicator 
+                profileImg.style.opacity = 3;
+            alert('Picture uploaded successfully');
+            location.reload(); // Reload to update the profile picture
+             },3000);
+        } catch (err) {
+            uploading.style.display = 'block'; // show uploading indicator  for another trial.
+            profileImg.style.opacity = 3;
+            alert('An error occurred during the upload. Make sure you are uploading an image.');
+             location.reload();
+        }
+    } else {
+        alert('No file selected.');
+    }
+});
+ 
+
+
+
+
+
+  //editing user info
+
+
+            var updating = document.getElementById('updatestart');
+           updating.addEventListener('submit', async (e)=>{
+            e.preventDefault();    
+            var uname = document.getElementById('editUsername');
+            var fname = document.getElementById('editFirstName');
+            var lname = document.getElementById('editLastName');  
+            var demail = document.getElementById('editEmail'); 
+            var phonum = document.getElementById('editPhone'); 
+            var errer = document.getElementById('erre');  
+            var saveitt = document.getElementById('saveit');   
+            saveitt.innerHTML = 'Updating..';
+            //change button state
+            saveitt.style.opacity = 0.3;
+            saveitt.disabled = true;
+            // collect the update infos
+            const upddata = {
+                 reguser : uname.value, 
+                 firstname : fname.value,
+                 lastname : lname.value, 
+                 regemail : demail.value,
+                 regphone : phonum.value,
+            }  
+               
+
+            try{
+            const resp = await fetch('/updateprofiledata', {
+                 method : 'post',
+                 body : JSON.stringify(upddata),
+                 headers : {
+                       'Content-Type' : 'application/json',
+                       Accept: 'application/json',
+                 },
+            });    
+
+            if(!resp.ok) {
+                  throw resp;
+            }      
+
+
+              //change button state 
+              saveitt.innerHTML = 'Updated';
+              setTimeout(()=>{ 
+                saveitt.style.opacity = 2;
+                saveitt.disabled = false;
+              }, 3000);  
+ 
+              setTimeout(()=>{   
+   saveitt.innerHTML = 'Save Changes'; 
+   location.reload(); 
+              }, 3200);
+
+        }  catch (err) {  
+             saveitt.style.opacity = 2;
+             saveitt.disabled = false;
+             saveitt.innerHTML = 'Save Changes'; 
+              const error = await err.text();  
+              errer.innerHTML = error;
+              errer.style.color = 'red';
+              errer.style.marginTop = '10px';
+              errer.style.fontSize = '15px';
+              errer.style.fontWeight = 'bold';  
+              errer.style.textAlign = 'center';
+        }
+
+        
+           });  
+
+</script>
+
+
+</body>
+
+</html>

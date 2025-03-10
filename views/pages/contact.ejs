@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zxx">
+	
+     <head> 
+		<%- include('../partials/head.ejs') %>	 
+		<title>Contact Us | UPUI – Get in Touch</title>  
+<meta name="description" content="Reach out to Urhobo Progress Union Ireland (UPUI) for inquiries, collaborations, or to learn more about our community initiatives. We're here to connect with you!">  
+
+<!-- Open Graph Meta Tags for Facebook, LinkedIn, etc. -->
+<meta property="og:title" content="Contact Us | Urhobo Progress Union Ireland">
+<meta property="og:description" content="Have questions or need assistance? Contact UPUI today and let’s build a stronger community together.">
+<meta property="og:image" content="https://upuireland.org/img/upuilogo.png">
+<meta property="og:url" content="https://upuireland.org/contact">
+<meta property="og:type" content="website">  
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Contact Us | Urhobo Progress Union Ireland">
+<meta name="twitter:description" content="Get in touch with UPUI for inquiries, support, or community engagement. We’re here to help!">
+<meta name="twitter:image" content="https://upuireland.org/img/upuilogo.png">
+<meta name="twitter:url" content="https://upuireland.org/contact">
+ 
+
+		<style>
+			   #errsend{
+				   color:red;
+				   font-size:17px;
+                   text-align:center;
+				   font-weight:bold;
+			   }
+		</style>
+    </head> 
+
+    <body>
+	
+		<!-- Preloader -->
+		<%- include('../partials/preloader.ejs') %>
+        <!-- End Preloader -->
+		
+		 
+	
+		<!-- Header Area -->
+		<%- include('../partials/header.ejs') %>
+		<!-- End Header Area -->
+	
+		<!-- Breadcrumbs -->
+		<div class="breadcrumbs overlay">
+			<div class="container">
+				<div class="bread-inner">
+					<div class="row">
+						<div class="col-12">
+							<h2>Contact Us</h2>
+							<ul class="bread-list">
+								<li><a href="/">Home</a></li>
+								<li><i class="icofont-simple-right"></i></li>
+								<li class="active">Contact Us</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Breadcrumbs -->
+				
+		<!-- Start Contact Us -->
+		<section class="contact-us section">
+			<div class="container">
+				<div class="inner">
+					<div class="row"> 
+						<div class="col-lg-6">
+							<div class="contact-us-left">
+								<!--Start Google-map -->
+								<div><img src="/img/upuimap.jpg" alt="#" /> </div>
+								<!--/End Google-map -->
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="contact-us-form">
+								<h2>Contact With Us</h2>
+								<p>If you have any questions please fell free to contact with us.</p>
+								<!-- Form -->
+								<form id="contacto">
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<input type="text" id="uname" name="name" placeholder="Name" required="">
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<input type="email" id="uemail" name="email" placeholder="Email" required="">
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<input type="number" id="uphone" name="phone" placeholder="Phone" required="">
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<input type="text" id="usub" name="subject" placeholder="Subject" required="">
+											</div>
+										</div>
+										<div class="col-lg-12">
+											<div class="form-group">
+												<textarea name="message" id="umsg" placeholder="Your Message" required=""></textarea>
+											</div>
+										</div>   
+
+										<div class="col-lg-12">
+											<div class="form-group"> 
+												<p id="errsend"></p>
+											 </div>
+										</div>
+
+										<div class="col-12">
+											<div class="form-group login-btn">
+												<button class="btn" id="mup" type="submit">Send</button>
+											</div>
+											<div class="checkbox">
+												<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox">Do you want to subscribe our Newsletter ?</label>
+											</div>
+										</div>
+									</div>
+								</form>
+								<!--/ End Form -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="contact-info">
+					<div class="row" style="display:flex; justify-content:center; align-items:center;">
+						<!-- single-info -->
+						<div class="col-lg-4 col-12 ">
+							<div class="single-info">
+								<i class="icofont icofont-ui-call"></i>
+								<div class="content">
+									<h3>Contact President</h3>
+									<p>0872501054</p>
+								</div>
+							</div>
+						</div>
+						<!--/End single-info -->
+						<!-- single-info -->
+						<div class="col-lg-4 col-12 ">
+							<div class="single-info">
+								<i class="icofont icofont-ui-call"></i>
+								<div class="content">
+									<h3>Contact  Secretary</h3>
+									<p>0863640959</p>
+								</div>
+							</div>
+						</div>
+						<!--/End single-info --> 
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/ End Contact Us -->
+		
+		<!-- Footer Area -->
+		<%- include('../partials/footer.ejs') %>
+		<!--/ End Footer Area -->  
+
+
+		  <script>  
+		  var contacto = document.getElementById('contacto');
+		  contacto.addEventListener('submit', async (e)=>{
+			  e.preventDefault();
+	         
+			   var uname = document.getElementById('uname'); 
+			   var uemail = document.getElementById('uemail');
+			   var uphone = document.getElementById('uphone');
+			   var usub = document.getElementById('usub');
+			   var umsg = document.getElementById('umsg');   
+
+			   var errsend = document.getElementById('errsend');
+
+			   var btn = document.getElementById('mup');
+			   btn.innerHTML = 'Sending...';
+			   btn.style.opacity = 0.45356;
+			   btn.disabled = true;  
+
+
+			   const data = {
+				   sendername: uname.value,
+				   senderphone: uphone.value,
+				   senderemail: uemail.value,
+				   sendersubject: usub.value,
+				   sendermessage: umsg.value,
+			   }
+			   
+			   try{
+				      const resp = await fetch('/postcontact', {
+						  method : 'post',
+						  body : JSON.stringify(data), 
+						  headers:{ 
+							'Content-Type':'application/json',
+						     Accept:'application/json',
+						  },
+					  }); 
+
+					  if(!resp.ok) {
+						  throw resp;
+					  }  
+
+					  btn.innerHTML = 'Send';
+			   btn.style.opacity = 4;
+			   btn.disabled = false;    
+
+			   alert('Message sent successfully . Thanks for contacting us');
+			      setTimeout(()=>{
+					  location.reload();
+				  }, 1000);
+			   }   
+
+			   catch(err) {
+				  const error = await err.text();
+				  errsend.innerHTML = error;
+				  btn.innerHTML = 'Send';
+			   btn.style.opacity = 4;
+			   btn.disabled = false; 
+			   }
+		  })
+		  </script>
+	</body>
+	
+
+		</html>

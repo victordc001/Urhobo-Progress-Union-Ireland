@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="zxx">
+	
+ <head>
+	   <%- include('../partials/head.ejs'); %>	 
+		<!-- Title -->
+        <title>UPUI – Preserving Culture, Promoting Progress</title>  
+		<meta name="description" content="Urhobo Progress Union Ireland (UPUI) – Promoting unity, culture, and development among Urhobos in Ireland. Join us in preserving our heritage and fostering community growth.">
+    <!-- Open Graph Meta Tags for Facebook, LinkedIn, etc. -->
+		<meta property="og:title" content="Urhobo Progress Union Ireland | Unity & Growth">
+		<meta property="og:description" content="Join the Urhobo Progress Union Ireland (UPUI) to promote culture, unity, and progress within the Urhobo community in Ireland.">
+		<meta property="og:image" content="https://upuireland.org/img/upuilogo.png">
+		<meta property="og:url" content="https://upuireland.org">
+		<meta property="og:type" content="website"> 
+		 <!-- Twitter Card Meta Tags -->
+		 <meta name="twitter:card" content="summary_large_image">
+		 <meta name="twitter:title" content="Urhobo Progress Union Ireland | Unity & Growth">
+		 <meta name="twitter:description" content="UPUI is dedicated to uniting and empowering the Urhobo community in Ireland. Get involved today!">
+		 <meta name="twitter:image" content="https://upuireland.org/img/upuilogo.png">
+		 <meta name="twitter:url" content="https://upuireland.org">
+	 
+
+	   <style>
+	   
+	   #cookie-popup {
+		z-index:30;
+		position: fixed;
+		bottom: 20px;
+		left: 20px;
+		right: 20px;
+		background:#222;
+		color: white;
+		padding: 15px;
+		display: none;
+		justify-content: space-between;
+		align-items: center; 
+		animation: slideUpFadeIn 0.5s ease-out forwards;
+		border-radius: 5px;
+	} 
+
+	@keyframes slideUpFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+ 
+
+	#cookie-popup button {
+		margin-left: 10px;
+		padding: 5px 10px;
+		border: none;
+		cursor: pointer;
+		border-radius: 3px;
+	}
+	.accept-btn {
+		background: #4CAF50;
+		color: white;
+	}
+	.reject-btn {
+		background: #FF4444;
+		color: white; 
+		margin-top:2px;
+	}
+	   </style>
+</head>
+    <body>
+	
+		<%- include('../partials/preloader.ejs'); %>	 
+		<!-- Mediplus Color Palete  
+		<%- include('../partials/colorpalete.ejs'); %>
+		 /End Color Palete -->
+	
+		<!-- Header Area -->
+		<%- include('../partials/header.ejs'); %>	
+		<!-- End Header Area --> 
+
+		
+		<section class="slider">
+			<div class="hero-slider">
+				<!-- Start Single Slider -->
+				<div class="single-slider" style="background-image:url('img/upuibgshow.jpg')">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-7">
+								<div class="text">
+									<h1>Empowering <span>Urhobo</span> Culture in <span>Ireland</span></h1>
+									<p>Celebrating heritage, unity, and progress while fostering a strong Urhobo community abroad.</p>
+									<div class="button">
+										 <% if(!user) { %> 
+											<a href="/registration" class="btn">Join Us</a>
+										 <% } %>	
+										<a href="/registration" class="btn primary">Learn More</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Single Slider -->
+		
+				<!-- Start Single Slider -->
+				<div class="single-slider" style="background-image:url('img/slider.jpg')">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-7">
+								<div class="text">
+									<h1>Unity, <span>Development</span>, and <span>Progress</span></h1>
+									<p>Building a stronger community through cultural awareness, networking, and support initiatives.</p>
+									<div class="button">
+										
+										<% if(!user) { %> 
+											<a href="/registration" class="btn">Get Involved</a> 
+										 <% } %>	
+										<a href="/about" class="btn primary">About UPUI</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Single Slider -->
+		
+				<!-- Start Single Slider -->
+				<div class="single-slider" style="background-image:url('img/slider3.jpg')">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-7">
+								<div class="text">
+									<h1>Preserving <span>Tradition</span>, <span>Inspiring</span> the Future</h1>
+									<p>Dedicated to promoting Urhobo heritage, education, and social advancement in Ireland.</p>
+									<div class="button">
+										<% if(!user) { %> 
+											<a href="/registration" class="btn">Join the Movement</a>
+										 <% } %>	
+										<a href="/contact" class="btn primary">Contact Us</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Single Slider -->
+			</div>
+		</section>
+		
+		<!-- Slider Area -->
+		
+		<!--/ End Slider Area --> 
+
+		
+		
+		<!-- Start Schedule Area -->
+		<section class="schedule">
+			<div class="container">
+				<div class="schedule-inner">
+					<div class="row">
+						<div class="col-lg-4 col-md-6 col-12 ">
+							<!-- single-schedule -->
+							<div class="single-schedule first">
+								<div class="inner">
+									<div class="icon">
+										<i class="fa fa-handshake"></i>
+									</div>
+									<div class="single-content">
+										<span>Community Support</span>
+										<h4>Emergency Assistance</h4>
+										<p>We provide support for Urhobo families and individuals facing urgent challenges, ensuring no one stands alone in times of need.</p>
+										<a href="/about">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6 col-12">
+							<!-- single-schedule -->
+							<div class="single-schedule middle">
+								<div class="inner">
+									<div class="icon">
+										<i class="icofont-education"></i>
+									</div>
+									<div class="single-content">
+										<span>Cultural Learning</span>
+										<h4>Language & Heritage</h4>
+										<p>Join our Urhobo language school and cultural programs designed to preserve and promote our rich traditions for future generations.</p>
+										<a href="/about">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-12 col-12">
+							<!-- single-schedule -->
+							<div class="single-schedule last">
+								<div class="inner">
+									<div class="icon">
+										<i class="icofont-ui-calendar"></i>
+									</div>
+									<div class="single-content">
+										<span>Upcoming Events</span>
+										<h4>Meeting & Activity Schedule</h4>
+										<ul class="time-sidual">
+											<li class="day">Monthly General Meeting <span>First Sunday of Every Month</span></li>
+											<li class="day">Cultural Festival <span>Annually - Date TBA</span></li>
+											<li class="day">Educational Workshops <span>Quarterly Sessions</span></li>
+										</ul>
+										<a href="/about">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!--/End Start schedule Area -->
+
+		<!-- Start Feautes -->
+		<section class="Feautes section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section-title">
+							<h2>Committed to Supporting Urhobo People & Our Community</h2>
+							<img style="width:50px; height:auto" src="/img/urbicon.jpg" alt="#">
+							<p>Empowering the Urhobo community through unity, cultural preservation, and social support.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4 col-12">
+						<!-- Start Single features -->
+						<div class="single-features">
+							<div class="signle-icon">
+								<i class="icofont icofont-users-social"></i>
+							</div>
+							<h3>Community Support</h3>
+							<p>We provide assistance, networking, and resources for Urhobo families and individuals in Ireland.</p>
+						</div>
+						<!-- End Single features -->
+					</div>
+					<div class="col-lg-4 col-12">
+						<!-- Start Single features -->
+						<div class="single-features">
+							<div class="signle-icon">
+								<i class="icofont icofont-book-alt"></i>
+							</div>
+							<h3>Education & Cultural Awareness</h3>
+							<p>Promoting Urhobo heritage through language classes, history sessions, and cultural events.</p>
+						</div>
+						<!-- End Single features -->
+					</div>
+					<div class="col-lg-4 col-12">
+						<!-- Start Single features -->
+						<div class="single-features last">
+							<div class="signle-icon">
+								<i class="icofont icofont-calendar"></i>
+							</div>
+							<h3>Events & Networking</h3>
+							<p>Hosting social gatherings, professional networking, and annual cultural festivals for Urhobo people.</p>
+						</div>
+						<!-- End Single features -->
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!--/ End Feautes -->
+		
+		<!-- Start Fun-facts -->
+<div id="fun-facts" class="fun-facts section overlay">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-12">
+                <!-- Start Single Fun -->
+                <div class="single-fun">
+                    <i class="icofont icofont-users-social"></i>
+                    <div class="content">
+                        <span class="counter">1200+</span>
+                        <p>Urhobo Members in Ireland</p>
+                    </div>
+                </div>
+                <!-- End Single Fun -->
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+                <!-- Start Single Fun -->
+                <div class="single-fun">
+                    <i class="icofont icofont-handshake-deal"></i>
+                    <div class="content">
+                        <span class="counter">75+</span>
+                        <p>Community Events Hosted</p>
+                    </div>
+                </div>
+                <!-- End Single Fun -->
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+                <!-- Start Single Fun -->
+                <div class="single-fun">
+                    <i class="icofont icofont-education"></i>
+                    <div class="content">
+                        <span class="counter">500+</span>
+                        <p>Youths Engaged in Empowerment Programs</p>
+                    </div>
+                </div>
+                <!-- End Single Fun -->
+            </div>
+            <div class="col-lg-3 col-md-6 col-12">
+                <!-- Start Single Fun -->
+                <div class="single-fun">
+                    <i class="icofont icofont-globe"></i>
+                    <div class="content">
+                        <span class="counter">25</span>
+                        <p>Years of Cultural Heritage Promotion</p>
+                    </div>
+                </div>
+                <!-- End Single Fun -->
+            </div>
+        </div>
+    </div>
+</div>
+<!--/ End Fun-facts -->
+
+		
+		<!-- Start Why choose -->
+		<section class="why-choose section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section-title">
+							<h2>Empowering the Urhobo Community in Ireland</h2>
+							<img style="width:50px; height:auto" src="/img/urbicon.jpg" alt="#">
+							<p>Preserving our heritage, supporting our members, and fostering unity within the Urhobo community.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6 col-12">
+						<!-- Start Choose Left -->
+						<div class="choose-left">
+							<h3>Who We Are</h3>
+							<p>Urhobo Progress Union Ireland is a cultural and community organization dedicated to uniting and supporting Urhobo people in Ireland through cultural promotion, social events, and development initiatives.</p>
+							<p>We aim to strengthen our community by providing guidance, networking opportunities, and resources for our members.</p>
+							<div class="row">
+								<div class="col-lg-6">
+									<ul class="list">
+										<li><i class="fa fa-caret-right"></i>Promoting Urhobo culture and traditions</li>
+										<li><i class="fa fa-caret-right"></i>Supporting youth and educational programs</li>
+										<li><i class="fa fa-caret-right"></i>Encouraging business and career growth</li>
+									</ul>
+								</div>
+								<div class="col-lg-6">
+									<ul class="list">
+										<li><i class="fa fa-caret-right"></i>Fostering community engagement</li>
+										<li><i class="fa fa-caret-right"></i>Providing welfare and legal support</li>
+										<li><i class="fa fa-caret-right"></i>Organizing cultural and networking events</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!-- End Choose Left -->
+					</div>
+					<div class="col-lg-6 col-12">
+						<!-- Start Choose Right -->
+						<div class="choose-right">
+							<div class="video-image">
+								<!-- Video Animation -->
+								<div class="promo-video">
+									<div class="waves-block">
+										<div class="waves wave-1"></div>
+										<div class="waves wave-2"></div>
+										<div class="waves wave-3"></div>
+									</div>
+								</div>
+								<!--/ End Video Animation -->
+								<a href="/img/upuivideo.mp4" class="video video-popup mfp-iframe">
+									<i class="fa fa-play"></i>
+								</a>
+							</div>
+						</div>
+						<!-- End Choose Right -->
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!--/ End Why choose -->
+		
+		<!-- Start Call to action -->
+		<section class="call-action overlay" data-stellar-background-ratio="0.5">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-12">
+						<div class="content">
+							<h2>Join Urhobo Progress Union Ireland – Connect, Support & Grow!</h2>
+							<p>Be part of a strong, united Urhobo community in Ireland. Connect with fellow members, access support, and preserve our rich cultural heritage.</p>
+							<div class="button"> 
+								<% if(!user) { %> 
+									<a href="/registration" class="btn">Join Us</a>
+								 <% } %> 
+								<a href="/about" class="btn second">Learn More <i class="fa fa-long-arrow-right"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!--/ End Call to action -->
+		
+		<!-- Start portfolio 
+		<section class="portfolio section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section-title">
+							<h2>Preserving Urhobo Culture & Heritage</h2>
+							<img style="width:50px; height:auto" src="/img/urbicon.jpg" alt="#">
+							<p>Explore our initiatives, cultural events, and community programs dedicated to preserving Urhobo traditions and unity in Ireland.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12 col-12">
+						<div class="owl-carousel portfolio-slider">
+							<div class="single-pf">
+								<img src="img/event1.jpg" alt="Urhobo Cultural Event">
+								<a href="portfolio-details.html" class="btn">View Details</a>
+							</div>
+							<div class="single-pf">
+								<img src="img/event2.jpg" alt="Community Gathering">
+								<a href="portfolio-details.html" class="btn">View Details</a>
+							</div>
+							<div class="single-pf">
+								<img src="img/event3.jpg" alt="Traditional Festival">
+								<a href="portfolio-details.html" class="btn">View Details</a>
+							</div>
+							<div class="single-pf">
+								<img src="img/event4.jpg" alt="Youth Empowerment Program">
+								<a href="portfolio-details.html" class="btn">View Details</a>
+							</div>
+							<div class="single-pf">
+								<img src="img/event5.jpg" alt="Urhobo Language Workshop">
+								<a href="portfolio-details.html" class="btn">View Details</a>
+							</div>
+							<div class="single-pf">
+								<img src="img/event6.jpg" alt="Cultural Dance Performance">
+								<a href="portfolio-details.html" class="btn">View Details</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		  End portfolio -->
+		
+		<!-- Start service -->
+		<section class="services section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section-title">
+							<h2>Services We Provide for the Urhobo Community</h2>
+							<img style="width:50px; height:auto" src="/img/urbicon.jpg" alt="#">
+							<p>We are committed to enhancing the quality of life in the Urhobo community through a range of services that promote cultural, social, and economic growth.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4 col-md-6 col-12">
+						<!-- Start Single Service -->
+						<div class="single-service">
+							<i class="icofont icofont-people"></i>
+							<h4><a href="service-details.html">Cultural Preservation</a></h4>
+							<p>We promote and preserve the rich cultural heritage of the Urhobo people, ensuring traditions are passed down to future generations.</p>    
+						</div>
+						<!-- End Single Service -->
+					</div>
+					<div class="col-lg-4 col-md-6 col-12">
+						<!-- Start Single Service -->
+						<div class="single-service">
+							<i class="icofont icofont-building-alt"></i>
+							<h4><a href="service-details.html">Community Development</a></h4>
+							<p>We focus on projects that enhance the infrastructure, education, and economic opportunities for our community members.</p>    
+						</div>
+						<!-- End Single Service -->
+					</div>
+					<div class="col-lg-4 col-md-6 col-12">
+						<!-- Start Single Service -->
+						<div class="single-service">
+							<i class="icofont icofont-businessman"></i>
+							<h4><a href="service-details.html">Skills Development & Training</a></h4>
+							<p>Our training programs equip community members with practical skills to foster economic independence and growth.</p>    
+						</div>
+						<!-- End Single Service -->
+					</div>
+					<div class="col-lg-4 col-md-6 col-12">
+						<!-- Start Single Service -->
+						<div class="single-service">
+							<i class="icofont icofont-people"></i>
+							<h4><a href="service-details.html">Community Advocacy</a></h4>
+							<p>We advocate for the rights and welfare of the Urhobo people, ensuring their voices are heard in key decision-making processes.</p>    
+						</div>
+						<!-- End Single Service -->
+					</div>
+					<div class="col-lg-4 col-md-6 col-12">
+						<!-- Start Single Service -->
+						<div class="single-service">
+							<i class="icofont icofont-leaf"></i>
+							<h4><a href="service-details.html">Environmental Sustainability</a></h4>
+							<p>We work on initiatives that focus on preserving our environment and promoting sustainable practices in our community.</p>    
+						</div>
+						<!-- End Single Service -->
+					</div>
+					<div class="col-lg-4 col-md-6 col-12">
+						<!-- Start Single Service -->
+						<div class="single-service">
+							<i class="icofont icofont-heart"></i>
+							<h4><a href="service-details.html">Social Support Programs</a></h4>
+							<p>We offer various support programs aimed at uplifting the most vulnerable members of the Urhobo community.</p>    
+						</div>
+						<!-- End Single Service -->
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!--/ End service --> 
+		
+		<!-- Start Testimonials -->
+		<section class="section testimonials overlay" data-stellar-background-ratio="0.5">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section-title">
+							<h2>What Our Community Members Say About Urhobo Progress</h2>
+							<img style="width:50px; height:auto" src="/img/urbicon.jpg" alt="#">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12 col-12">
+						<div class="owl-carousel testimonial-slider">
+							<!-- Start Single Testimonial -->
+							<div class="single-testimonial"> 
+								<p>Urhobo Progress has been instrumental in supporting our community. Their initiatives bring positive change, making a lasting impact.</p>
+								<h4 class="name">Efe Oghene</h4>
+							</div>
+							<!-- End Single Testimonial -->
+							<!-- Start Single Testimonial -->
+							<div class="single-testimonial"> 
+								<p>The programs provided by Urhobo Progress have truly empowered our people. The community support has been unmatched.</p>
+								<h4 class="name">Vera Oghene</h4>
+							</div>
+							<!-- End Single Testimonial -->
+							<!-- Start Single Testimonial -->
+							<div class="single-testimonial"> 
+								<p>Urhobo Progress’s commitment to our development and growth has made a world of difference in our daily lives.</p>
+								<h4 class="name">Orere Ogaga</h4>
+							</div>
+							<!-- End Single Testimonial -->
+							<!-- Start Single Testimonial -->
+							<div class="single-testimonial"> 
+								<p>The work Urhobo Progress does for community development is nothing short of remarkable. Their vision brings hope for a better future.</p>
+								<h4 class="name">Dede Uruemu</h4>
+							</div>
+							<!-- End Single Testimonial -->
+							<!-- Start Single Testimonial -->
+							<div class="single-testimonial"> 
+								<p>Thanks to Urhobo Progress’s dedication, our community is flourishing with more opportunities and growth every day.</p>
+								<h4 class="name">Adefolake Ife</h4>
+							</div>
+							<!-- End Single Testimonial -->
+							<!-- Start Single Testimonial -->
+							<div class="single-testimonial"> 
+								<p>Urhobo Progress has opened new doors for us. Their efforts to improve our quality of life are a testament to their commitment to the people.</p>
+								<h4 class="name">Agbaje Ese</h4>
+							</div>
+							<!-- End Single Testimonial -->
+							<!-- Start Single Testimonial -->
+							<div class="single-testimonial"> 
+								<p>Urhobo Progress continues to lead the way in community service and development. Their efforts are always focused on enhancing our well-being.</p>
+								<h4 class="name">Omotara Ughere</h4>
+							</div>
+							<!-- End Single Testimonial -->
+							<!-- Start Single Testimonial -->
+							<div class="single-testimonial"> 
+								<p>Each time I experience the programs from Urhobo Progress, I feel more connected to a growing, supportive community.</p>
+								<h4 class="name">Ejovwoke Oria</h4>
+							</div>
+							<!-- End Single Testimonial -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!--/ End Testimonials -->
+		
+		<!-- Start Departments 
+		<section class="departments section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section-title">
+							<h2>We Offer Different Departments To Diagnose Your Diseases</h2>
+							<img style="width:50px; height:auto" src="/img/urbicon.jpg" alt="#">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<div class="department-tab">                                                                                         
+							<ul class="nav nav-tabs" id="myTab" role="tablist">
+								<li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#t-tab1" role="tab"><i class="icofont-heart-beat"></i><span class="first">Cardiac Clinic</span><span class="second">Lorem Sit</span></a></li>
+								<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#t-tab2" role="tab"><i class="icofont-brain-alt"></i><span class="first">Neurology</span><span class="second">Quis Est</span></a></li>
+								<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#t-tab3" role="tab"><i class="icofont-tooth"></i><span class="first">Dentistry</span><span class="second">Sit Dolor</span></a></li>
+								<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#t-tab4" role="tab"><i class="icofont-heart-beat"></i><span class="first">Gastroenterology</span><span class="second">Lorem Sit</span></a></li>
+								<li class="nav-item"><a class="nav-link" data-toggle="tab" href="#t-tab5" role="tab"><i class="icofont-bone"></i><span class="first">Orthopedagogy</span><span class="second">Lorem Sit</span></a></li>
+							</ul> 
+							<div class="tab-content" id="myTabContent">
+								 Tab 1 
+								<div class="tab-pane fade show active" id="t-tab1" role="tabpanel">
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="department-left">
+												<h3>Cardiac Clinic</h3>
+												<p class="p1">“Vivamus ut tellus sed tellus finibus egestas. Mauris adipiscing aliquet et nisl nec eleifend adipiscing elit.”</p>
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra ante vel est lobortis, a commodo magna rhoncus. In quis nisi non quam pharetra commodo. </p>
+												<ul class="list">
+													<li><i class="fa fa-check"></i>Maecenas vitae luctus nibh. Curabitur pharetra luctus est, sit amet aliquam ex posuere id. </li>
+													<li><i class="fa fa-check"></i> Maecenas pharetra ante vel est lobortis</li>
+													<li><i class="fa fa-check"></i>Lorem ipsum dolor sit amet, consectetur.</li>
+												</ul>
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="department-right">
+												<img src="img/department.jpg" alt="#">
+											</div>
+										</div>
+									</div>
+								</div>  
+								<div class="tab-pane fade" id="t-tab2" role="tabpanel">
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="department-left">
+												<h3>Neurology</h3>
+												<p class="p1">“Vivamus ut tellus sed tellus finibus egestas. Mauris adipiscing aliquet et nisl nec eleifend adipiscing elit.”</p>
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra ante vel est lobortis, a commodo magna rhoncus. In quis nisi non quam pharetra commodo. </p>
+												<ul class="list">
+													<li><i class="fa fa-check"></i>Maecenas vitae luctus nibh. Curabitur pharetra luctus est, sit amet aliquam ex posuere id. </li>
+													<li><i class="fa fa-check"></i> Maecenas pharetra ante vel est lobortis</li>
+													<li><i class="fa fa-check"></i>Lorem ipsum dolor sit amet, consectetur.</li>
+												</ul>
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="department-right">
+												<img src="img/department.jpg" alt="#">
+											</div>
+										</div>
+									</div>
+								</div> 
+								<div class="tab-pane fade" id="t-tab3" role="tabpanel">
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="department-left">
+												<h3>Dentistry</h3>
+												<p class="p1">“Vivamus ut tellus sed tellus finibus egestas. Mauris adipiscing aliquet et nisl nec eleifend adipiscing elit.”</p>
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra ante vel est lobortis, a commodo magna rhoncus. In quis nisi non quam pharetra commodo. </p>
+												<ul class="list">
+													<li><i class="fa fa-check"></i>Maecenas vitae luctus nibh. Curabitur pharetra luctus est, sit amet aliquam ex posuere id. </li>
+													<li><i class="fa fa-check"></i> Maecenas pharetra ante vel est lobortis</li>
+													<li><i class="fa fa-check"></i>Lorem ipsum dolor sit amet, consectetur.</li>
+												</ul>
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="department-right">
+												<img src="img/department.jpg" alt="#">
+											</div>
+										</div>
+									</div>
+								</div> 
+								<div class="tab-pane fade" id="t-tab4" role="tabpanel">
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="department-left">
+												<h3>Gastroenterology</h3>
+												<p class="p1">“Vivamus ut tellus sed tellus finibus egestas. Mauris adipiscing aliquet et nisl nec eleifend adipiscing elit.”</p>
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra ante vel est lobortis, a commodo magna rhoncus. In quis nisi non quam pharetra commodo. </p>
+												<ul class="list">
+													<li><i class="fa fa-check"></i>Maecenas vitae luctus nibh. Curabitur pharetra luctus est, sit amet aliquam ex posuere id. </li>
+													<li><i class="fa fa-check"></i> Maecenas pharetra ante vel est lobortis</li>
+													<li><i class="fa fa-check"></i>Lorem ipsum dolor sit amet, consectetur.</li>
+												</ul>
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="department-right">
+												<img src="img/department.jpg" alt="#">
+											</div>
+										</div>
+									</div>
+								</div> 
+								<div class="tab-pane fade" id="t-tab5" role="tabpanel">
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="department-left">
+												<h3>Orthopedagogy</h3>
+												<p class="p1">“Vivamus ut tellus sed tellus finibus egestas. Mauris adipiscing aliquet et nisl nec eleifend adipiscing elit.”</p>
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas pharetra ante vel est lobortis, a commodo magna rhoncus. In quis nisi non quam pharetra commodo. </p>
+												<ul class="list">
+													<li><i class="fa fa-check"></i>Maecenas vitae luctus nibh. Curabitur pharetra luctus est, sit amet aliquam ex posuere id. </li>
+													<li><i class="fa fa-check"></i> Maecenas pharetra ante vel est lobortis</li>
+													<li><i class="fa fa-check"></i>Lorem ipsum dolor sit amet, consectetur.</li>
+												</ul>
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="department-right">
+												<img src="img/department.jpg" alt="#">
+											</div>
+										</div>
+									</div>
+								</div> 
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>-->	  
+
+
+
+
+		<!---start news--> 
+		<div style="margin-top:55px;" class="max-w-4xl mx-auto py-10">
+			<h2 class="text-2xl font-bold text-center text-gray-800 mb-35">📰 Latest News</h2> <br>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+				<% documentedFeeds.forEach(article => { %>
+					<div class="bg-white p-4 rounded-lg shadow-md">
+						<h3 style="font-size:19px" class="text-lg font-semibold text-gray-900"><%= article.title %></h3>
+						<a href="<%= article.link %>" target="_blank" class="text-blue-600 font-medium mt-2 inline-block">Read More →</a>
+					</div>
+				<% }); %>
+			</div>
+		</div>
+		<!------news end-->
+		 
+		
+		<!-- Start Blog Area --
+		<section class="blog section" id="blog">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section-title">
+							<h2>Stay Updated with the Latest Urhobo Community Progress News</h2>
+							<img style="width:50px; height:auto" src="/img/urbicon.jpg" alt="#">
+							<p>We share the latest stories of success, growth, and development within the Urhobo community. Stay informed and join the movement!</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4 col-md-6 col-12">
+						 Single Blog --
+						<div class="single-news">
+							<div class="news-head">
+								<img src="img/blog1.jpg" alt="#">
+							</div>
+							<div class="news-body">
+								<div class="news-content">
+									<div class="date">22 Aug, 2024</div>
+									<h2><a href="blog-single.html">Celebrating Urhobo Cultural Heritage in Modern Times</a></h2>
+									<p class="text">Discover how the Urhobo community continues to preserve its culture while embracing modern advancements in technology, education, and leadership.</p>
+								</div>
+							</div>
+						</div>
+						-- End Single Blog --
+					</div>
+					<div class="col-lg-4 col-md-6 col-12">
+						-- Single Blog --
+						<div class="single-news">
+							<div class="news-head">
+								<img src="img/blog2.jpg" alt="#">
+							</div>
+							<div class="news-body">
+								<div class="news-content">
+									<div class="date">15 Jul, 2024</div>
+									<h2><a href="blog-single.html">Top Five Ways to Contribute to Urhobo Community Development</a></h2>
+									<p class="text">Learn how individuals and organizations can make a lasting impact in the growth and development of the Urhobo nation, from local initiatives to global outreach.</p>
+								</div>
+							</div>
+						</div>
+						-- End Single Blog --
+					</div>
+					<div class="col-lg-4 col-md-6 col-12">
+						-- Single Blog --
+						<div class="single-news">
+							<div class="news-head">
+								<img src="img/blog3.jpg" alt="#">
+							</div>
+							<div class="news-body">
+								<div class="news-content">
+									<div class="date">05 Jan, 2024</div>
+									<h2><a href="blog-single.html">Empowering the Next Generation of Urhobo Leaders</a></h2>
+									<p class="text">We explore the importance of education, mentorship, and leadership programs in nurturing the next generation of Urhobo leaders who will continue the community’s legacy.</p>
+								</div>
+							</div>
+						</div>
+					-- End Single Blog --
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		 End Blog Area -->  
+		
+		 
+		
+		<!-- Start Newsletter Area -->
+		<%- include('../partials/newsletter.ejs') %>
+		<!-- /End Newsletter Area -->
+		
+		<!-- Footer Area -->
+            <%- include('../partials/footer.ejs') %>
+		<!--/ End Footer Area -->    
+	    
+		<div id="cookie-popup">
+			<p style="color:white">We use cookies to improve your experience. Accept or reject?</p>
+			<div>
+				<button class="accept-btn" onclick="acceptCookies()">Accept</button> 
+				<button class="reject-btn" onclick="rejectCookies()">Reject</button>
+			</div>
+		</div>
+
+		<script>
+			function acceptCookies() {
+				localStorage.setItem("cookiesAccepted", "true");
+				document.getElementById("cookie-popup").style.display = "none";
+			}
+	
+			function rejectCookies() {
+				document.getElementById("cookie-popup").style.display = "none";
+			}
+	
+			window.onload = function() {
+				setTimeout(() => {
+					if (!localStorage.getItem("cookiesAccepted")) {
+						document.getElementById("cookie-popup").style.display = "flex";
+					}
+				}, 5000);
+			}
+		</script>
+
+	</body>
+		
+		</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zxx"> 
+	
+    <head>
+	<%- include('../partials/head.ejs') %>   
+	<title>UPUI – Login</title>  
+<meta name="description" content="Log in to your UPUI account to stay connected with the Urhobo Progress Union Ireland community and access exclusive member features.">
+
+<!-- Open Graph Meta Tags for Facebook, LinkedIn, etc. -->
+<meta property="og:title" content="UPUI – Login">
+<meta property="og:description" content="Access your UPUI account to engage with the Urhobo community and participate in cultural and developmental activities.">
+<meta property="og:image" content="https://upuireland.org/img/upuilogo.png">
+<meta property="og:url" content="https://upuireland.org/login">
+<meta property="og:type" content="website"> 
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="UPUI – Login">
+<meta name="twitter:description" content="Sign in to your UPUI account and be part of the Urhobo Progress Union Ireland community.">
+<meta name="twitter:image" content="https://upuireland.org/img/upuilogo.png">
+<meta name="twitter:url" content="https://upuireland.org/login">
+
+
+	  <style>
+		  p{
+           font-family:'Poppins', sans-serif;
+         } 
+         .col-12:has(p:empty) {
+          display: none;
+         } 
+	  </style>
+
+    </head> 
+
+    <body>
+	
+		<!-- Preloader -->
+		<%- include('../partials/preloader.ejs') %>
+        <!-- End Preloader -->
+		
+		 
+	
+		<!-- Header Area -->
+		<%- include('../partials/header.ejs') %>
+		<!-- End Header Area -->
+	
+		<!-- Breadcrumbs -->
+		<div class="breadcrumbs overlay">
+			<div class="container">
+				<div class="bread-inner">
+					<div class="row">
+						<div class="col-12">
+							<h2>Login</h2>
+							<ul class="bread-list">
+								<li><a href="/">Home</a></li>
+								<li><i class="icofont-simple-right"></i></li>
+								<li class="active">Login</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Breadcrumbs -->
+				
+		<!-- Shop Login -->
+		<section class="login section">
+			<div class="container">
+				<div class="inner">
+					<div class="row"> 
+						<div class="col-lg-6">
+							<div class="login-left">
+								<img src="/img/urblogin.jpg" alt="upui">
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="login-form">
+								<h2>Login Here</h2>
+								<p> No account yet ? <a href="/registration">Register Here</a></p>
+								<!-- Form -->
+								<form class="form" id="leggo">
+									<div class="row"> 
+										<div class="col-lg-6">
+											<div class="form-group">
+												<input id="logme" type="email" name="email" placeholder="Your Email">
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<input id="logpass" type="password" name="password" placeholder="Password">
+											</div>
+										</div>  
+
+										<div class="col-12">
+										      <p style="text-align:center" id="errlogin"></p>
+										</div>  
+										
+										<div class="col-12">
+											<div class="form-group login-btn">
+												<button id="mlog" class="btn" type="submit">Login</button>
+											</div>
+											<div class="checkbox">
+												<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox">Remember me</label>
+											</div>
+											<a href="/reset-password" class="lost-pass">Lost your password ?</a>
+										</div>
+									</div>
+								</form>
+								<!--/ End Form -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/ End Login -->
+		
+		<!-- Footer Area -->
+		<%- include('../partials/footer.ejs') %>
+		<!--/ End Footer Area --> 
+
+		<script>
+			  
+var leggo = document.getElementById('leggo');
+leggo.addEventListener('submit', async (p)=>{
+     p.preventDefault();
+                
+
+                    let logme = document.getElementById('logme'); 
+                    let logpass = document.getElementById('logpass');
+                    let mlog = document.getElementById('mlog');
+                    let loginerror = document.getElementById('errlogin');
+                    mlog.innerHTML = 'Processing';
+                    mlog.style.opacity = '0.855';
+                    mlog.disabled = true;
+
+                    const logindata = {
+                      regemail : logme.value,
+                      regpass : logpass.value, 
+                    } 
+ 
+                    
+                 try{
+                    const response = await fetch('/logino', {
+                        method : 'post',
+                        body : JSON.stringify(logindata),
+                        headers : {
+                           'Content-Type' : 'application/json',
+                            Accept : 'application/json',
+                        },
+                    });
+                    
+                    if(!response.ok){
+                      mlog.innerHTML = 'Log In';
+                        throw response;
+                    } 
+
+                    mlog.style.opacity = '1';
+                    const result = await response.json();
+                    loginerror.innerHTML = ''; 
+                    mlog.disabled = false;
+ 
+
+                    setTimeout( ()=> {
+                   window.location.assign(`/verification/${logme.value}`); 
+                 }, 3000);
+
+                }
+
+
+                  catch(error){  
+                    let loginerror = document.getElementById('errlogin');
+                    mlog.disabled = false;   
+                    const errresult = await error.text();    
+					loginerror.innerHTML = errresult;
+                    loginerror.style.color = 'red';
+                    loginerror.style.marginTop = '10px';
+                    loginerror.style.fontSize = '16px';
+                    loginerror.style.fontWeight = 'bold';
+                  }  
+                   
+           });       
+
+        
+     
+ 
+		</script>
+		   
+		</html>

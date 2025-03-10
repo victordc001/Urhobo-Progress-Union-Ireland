@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zxx">    
+
+  <head>
+	<%- include('../partials/head.ejs') %>  
+  <title>UPUI – Join Us Today</title>  
+  <meta name="description" content="Become a member of Urhobo Progress Union Ireland (UPUI). Register today to be part of our vibrant community and contribute to cultural and community growth.">
+  
+  <!-- Open Graph Meta Tags for Facebook, LinkedIn, etc. -->
+  <meta property="og:title" content="UPUI – Registration">
+  <meta property="og:description" content="Sign up to become a part of the Urhobo Progress Union Ireland. Join us in preserving culture and promoting progress.">
+  <meta property="og:image" content="https://upuireland.org/img/upuilogo.png">
+  <meta property="og:url" content="https://upuireland.org/registration">
+  <meta property="og:type" content="website"> 
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="UPUI – Join Us Today">
+  <meta name="twitter:description" content="Register now to be part of UPUI, where culture and unity thrive.">
+  <meta name="twitter:image" content="https://upuireland.org/img/upuilogo.png">
+  <meta name="twitter:url" content="https://upuireland.org/registration">
+  
+    <style> 
+         p{
+           font-family:'Poppins', sans-serif;
+         } 
+         .col-12:has(p:empty) {
+          display: none;
+         }
+    </style> 
+  </head>  
+
+    <body>
+	
+		<!-- Preloader -->
+		<%- include('../partials/preloader.ejs') %>
+        <!-- End Preloader -->
+		 
+		<!-- Header Area -->
+		<%- include('../partials/header.ejs') %>
+		<!-- End Header Area -->
+	
+		<!-- Breadcrumbs -->
+		<div class="breadcrumbs overlay">
+			<div class="container">
+				<div class="bread-inner">
+					<div class="row">
+						<div class="col-12">
+							<h2>Register</h2>
+							<ul class="bread-list">
+								<li><a href="/">Home</a></li>
+								<li><i class="icofont-simple-right"></i></li>
+								<li class="active">Register</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Breadcrumbs -->
+				
+		<!-- Shop Register -->
+		<section class="register section">
+			<div class="container">
+				<div class="inner">
+					<div class="row"> 
+						<div class="col-lg-6">
+							<div class="register-left">
+                <img src="/img/urbjoin.jpg" alt="upui">
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="register-form">
+								<h2>Register Here</h2>
+								<p>Already have an account ? <a href="/login">Login Here</a></p>
+								<!-- Form -->
+								<form class="form" id="reggo">
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="form-group">
+												<input id="firstname" type="text" name="name" placeholder="First Name" required="">
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<input id="lastname" type="text" name="name" placeholder="Last Name" required="">
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<input id="regphone" type="number" name="phonenumber" placeholder="Phone" required="">
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="form-group">
+												<input id="regem" type="email" name="email" placeholder="Email" required="">
+											</div>
+										</div> 
+										<div class="col-lg-6">
+											<div class="form-group">
+												<input id="regname" type="text" name="username" placeholder="Username" required="">
+											</div>
+										</div> 
+
+										<div class="col-lg-6">
+											<div class="form-group">
+												<input id="signpass" type="password" name="password" placeholder="Password" required="">
+											</div>
+										</div>  
+                       
+
+										<div class="col-lg-6">
+											<div class="form-group">
+												<input id="dsame" type="password" name="password" placeholder="Confirm Password" required="">
+											</div>
+										</div>       
+ 
+                      
+
+                    <div class="col-12"> 
+                      <p id="twins"></p> 
+                      </div> 
+                    
+                    <div class="col-12">
+                      <p id="errsignup"></p>
+                      </div>      
+  
+                      <div class="col-12">
+                        <p id="lgr"></p>
+                        </div> 
+     
+										<div class="col-12"> 
+                      <div class="checkbox">
+												<label class="checkbox-inline" for="checktermo"><input name="news" id="checktermo" type="checkbox" required>Yes, I agree with all</label>
+											</div>
+											<a href="/terms_and_conditions" class="terms">Terms & Conditions</a>
+											<div class="form-group login-btn">
+												<button id="mup" class="btn" type="submit">Register</button>
+											</div> 
+										</div>
+									</div>
+								</form>
+								<!--/ End Form -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/ End Register -->
+		
+		<!-- Footer Area -->
+		<%- include('../partials/footer.ejs') %>
+		<!--/ End Footer Area --> 
+
+		<script>
+			   
+       
+           
+			   ()=>{
+                    var errsignup = document.getElementById('errsignup');  
+                    var twins = document.getElementById('twins');  
+                    var mup = document.getElementById('mup');
+                    var signpass = document.getElementById('signpass');     
+                    var regname = document.getElementById('regname');  
+                    var regem = document.getElementById('regem');
+                    var regphone = document.getElementById('regphone'); 
+                    var firstname = document.getElementById('firstname'); 
+                    var lastname = document.getElementById('lastname');   
+                    var checkterm = document.getElementById('checktermo');              
+                    var dsame = document.getElementById('dsame');  
+                    var loginerr = document.getElementById('lgr');
+                    mup.style.opacity = '0.2';
+             };  
+ 
+
+             document.addEventListener("DOMContentLoaded", function () {
+                    if(checkterm) {
+                      checkterm.onchange = function(e) {
+                   if(!this.checked){ 
+                    errsignup.innerHTML = 'You must agree with our terms and conditions before sign up';
+                    errsignup.style.color = 'red';
+                    errsignup.style.textAlign = 'center';
+                    errsignup.style.marginTop = '7px';
+                    errsignup.style.fontWeight = 'bold';
+                    errsignup.style.fontSize = '14px';
+                    mup.disabled = true;
+                    mup.style.opacity = '0.2'; 
+                }  else {   
+                    alert('checked');
+                    mup.disabled = false;
+                    mup.style.opacity = '4';  
+                    errsignup.innerHTML = '';
+                } 
+                   }  
+
+                    }   else{alert("no")}
+             });
+
+            
+ 
+                 signpass.onkeyup = function() {
+                    
+                if(signpass.value.search(/[a-z]/) < 0){
+                    errsignup.innerHTML = 'incomplete!, password must contain lowercase character';
+                    errsignup.style.color = 'red';
+                    errsignup.style.textAlign = 'center';
+                    errsignup.style.marginTop = '7px';
+                    errsignup.style.fontWeight = 'bold';
+                    errsignup.style.fontSize = '14px';
+                    mup.disabled = true;
+                    mup.style.opacity = '0.2'; 
+                }   
+
+                
+
+                  
+               else if(signpass.value.search(/[A-Z]/) < 0){
+                    errsignup.innerHTML = 'incomplete!, password must contain uppercase character';
+                    errsignup.style.color = 'red';
+                    errsignup.style.textAlign = 'center';
+                    errsignup.style.marginTop = '7px';
+                    errsignup.style.fontWeight = 'bold';
+                    errsignup.style.fontSize = '14px';
+                    mup.disabled = true;
+                    mup.style.opacity = '0.2'; 
+                }     
+
+                else if(signpass.value.search(/[0-9]/) < 0){
+                    errsignup.innerHTML = 'invalid!, password must contain number';
+                    errsignup.style.color = 'red';
+                    errsignup.style.textAlign = 'center';
+                    errsignup.style.marginTop = '7px';
+                    errsignup.style.fontWeight = 'bold';
+                    errsignup.style.fontSize = '14px';
+                    mup.disabled = true;
+                    mup.style.opacity = '0.2'; 
+                }  
+
+                else if(signpass.value.search(/[!@#^&*$£%]/) < 0){
+                    errsignup.innerHTML = 'password must contain at least one symbol';
+                    errsignup.style.color = 'red';
+                    errsignup.style.textAlign = 'center';
+                    errsignup.style.marginTop = '7px';
+                    errsignup.style.fontWeight = 'bold';
+                    mup.disabled = true;
+                    mup.style.opacity = '0.2';
+                    errsignup.style.fontSize = '14px'; 
+                } 
+ 
+
+
+                 
+                else if(signpass.value.length < 8){
+                    errsignup.innerHTML = 'oops!, password is too short and weak';
+                    errsignup.style.color = 'red';
+                    errsignup.style.textAlign = 'center';
+                    errsignup.style.marginTop = '7px';
+                    errsignup.style.fontWeight = 'bold';
+                    errsignup.style.fontSize = '14px';
+                    mup.disabled = true;
+                    mup.style.opacity = '0.2'; 
+                }  
+
+                else if(signpass.value.length > 24){
+                    errsignup.innerHTML = 'oops!, password is too long';
+                    errsignup.style.color = 'red';
+                    errsignup.style.textAlign = 'center';
+                    errsignup.style.marginTop = '7px';
+                    errsignup.style.fontWeight = 'bold';
+                    errsignup.style.fontSize = '14px';
+                    mup.disabled = true;
+                    mup.style.opacity = '0.2'; 
+                } 
+
+
+
+                 else{
+                    errsignup.innerHTML = ''; 
+                    mup.disabled = false;
+                    mup.style.opacity = '2'; 
+                 } 
+ 
+                 };     
+
+
+                 dsame.onkeyup = function() {
+                    errsignup.innerHTML = '';
+                    if(signpass.value !== dsame.value){
+                       twins.innerHTML = 'Fields must be of same value'; 
+                    twins.style.color = 'red';
+                    twins.style.textAlign = 'center';
+                    twins.style.marginTop = '7px';
+                    twins.style.fontWeight = 'bold';
+                  twins.style.fontSize = '16px';
+                  mup.disabled = true;
+                    mup.style.opacity = '0.2'; 
+                    }  
+
+                    else{ 
+                       twins.innerHTML = '';  
+                      mup.disabled = false;
+                      mup.style.opacity = '2'; 
+                        
+                    } 
+
+                 } 
+ 
+
+                   regphone.onkeyup = function(e) {
+                   if(e.target.value.length > 15){
+                    errsignup.innerHTML = 'oops!, phone number is too long';
+                    errsignup.style.color = 'red';
+                    errsignup.style.textAlign = 'center';
+                    errsignup.style.marginTop = '7px';
+                    errsignup.style.fontWeight = 'bold';
+                    errsignup.style.fontSize = '14px';
+                    mup.disabled = true;
+                    mup.style.opacity = '0.2'; 
+                }     else { 
+                    mup.disabled = false;
+                    mup.style.opacity = '4';  
+                    errsignup.innerHTML = '';
+                }  
+                   } 
+
+
+                 var reggo = document.getElementById('reggo');
+                 reggo.addEventListener('submit', async (r)=>{
+                    r.preventDefault(); 
+                    twins.innerHTML = '';
+                    mup.innerHTML = 'Registering..';
+                    mup.style.opacity = '0.855';
+ 
+
+                    const datareg = { 
+                          reguser : regname.value,
+                          regemail : regem.value,  
+                          regphone : regphone.value, 
+                          regpass : signpass.value,  
+                          firstname: firstname.value,
+                          lastname : lastname.value, 
+                     }; 
+                 
+                     try{
+                const response = await fetch('/postingregistration', {
+                     
+                     method :'post',
+                     body : JSON.stringify(datareg),
+                     headers:{ 
+                                    'Content-Type': 'application/json',
+                                    Accept: 'application/json',
+                             }
+         });  
+
+             if(!response.ok){
+                throw response;
+             }   
+             mup.style.opacity = '1';
+         
+         setTimeout(() => { 
+            loginerr.style.color = '';
+            mup.innerHTML = 'Register successful..';  
+            }, 3000);  
+
+            setTimeout(() => {  
+                window.location.assign(`/verification/${regem.value}`); 
+            }, 5000);
+
+        }    
+
+          catch(err) {
+            var loginerr = document.getElementById('lgr');
+                   mup.innerHTML = 'Register'; 
+                   const erresult = await err.text(); 
+                    loginerr.innerHTML = erresult;
+                    loginerr.style.color = 'red';
+                    loginerr.style.marginTop = '10px';
+                    loginerr.style.fontSize = '16px';
+                    loginerr.style.fontWeight = 'bold';  
+                    loginerr.style.textAlign = 'center';
+          }
+
+                 });
+         
+		</script>
+		 
+	</html>

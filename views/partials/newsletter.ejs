@@ -1,0 +1,79 @@
+ 
+
+ <section class="newsletter section">
+    <div class="container">
+        <div class="row ">
+            <div class="col-lg-6  col-12">
+                <!-- Start Newsletter Form -->
+                <div class="subscribe-text ">
+                    <h6>Sign up for our newsletter</h6>
+<p class="">Be the first to receive updates on our latest events, cultural programs, and community initiatives. Stay connected with the Urhobo community—subscribe today!</p>
+
+                </div>
+                <!-- End Newsletter Form -->
+            </div>
+            <div class="col-lg-6  col-12">
+                <!-- Start Newsletter Form -->
+                <div class="subscribe-form ">
+                    <form id="subs">
+                        <input name="EMAIL" placeholder="Your email address" class="common-input" onfocus="this.placeholder = ''"
+                            onblur="this.placeholder = 'Your email address'" id="uemail" required="" type="email">
+                        <button id="mup" class="btn">Subscribe</button>
+                    </form>
+                </div>
+                <!-- End Newsletter Form -->
+            </div>
+        </div>
+    </div>
+</section> 
+
+  <script>
+          var subs = document.getElementById('subs');
+		  subs.addEventListener('submit', async (e)=>{
+			  e.preventDefault();
+	          
+			   var uemail = document.getElementById('uemail');  
+
+			   var btn = document.getElementById('mup');
+			   btn.innerHTML = 'Subscribing...';
+			   btn.style.opacity = 0.45356;
+			   btn.disabled = true;  
+
+
+			   const data = { 
+				   email: uemail.value, 
+			   }
+			   
+			   try{
+				      const resp = await fetch('/newsl', {
+						  method : 'post',
+						  body : JSON.stringify(data), 
+						  headers:{ 
+							'Content-Type':'application/json',
+						     Accept:'application/json',
+						  },
+					  }); 
+
+					  if(!resp.ok) {
+						  throw resp;
+					  }  
+
+					  btn.innerHTML = 'Subscribe';
+			   btn.style.opacity = 4;
+			   btn.disabled = false;    
+
+			   alert('Thanks for subscribing to our newsletter');
+			      setTimeout(()=>{
+					  location.reload();
+				  }, 1000);
+			   }   
+
+			   catch(err) {
+				  const error = await err.text();
+				  alert(error);
+				  btn.innerHTML = 'Subscribe';
+			   btn.style.opacity = 4;
+			   btn.disabled = false; 
+			   }
+		  })
+  </script>

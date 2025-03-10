@@ -1,0 +1,287 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head.ejs'); %>
+    <title>UPUI – Reset Your Password</title>  
+    <meta name="description" content="Reset your password for Urhobo Progress Union Ireland (UPUI) to regain access to your account securely. Follow the instructions to reset your credentials.">
+    
+    <!-- Open Graph Meta Tags for Facebook, LinkedIn, etc. -->
+    <meta property="og:title" content="UPUI – Reset Your Password">
+    <meta property="og:description" content="Forgot your password? Reset it securely for your Urhobo Progress Union Ireland (UPUI) account.">
+    <meta property="og:image" content="https://upuireland.org/img/upuilogo.png">
+    <meta property="og:url" content="https://upuireland.org/reset-password">
+    <meta property="og:type" content="website"> 
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="UPUI – Reset Your Password">
+    <meta name="twitter:description" content="Securely reset your UPUI account password and regain access.">
+    <meta name="twitter:image" content="https://upuireland.org/img/upuilogo.png">
+    <meta name="twitter:url" content="https://upuireland.org/reset-password">
+    
+     
+    <style>
+         .loginf{
+           min-width:100px;
+           margin-left:40px;
+           margin-right:40px;
+           padding-left:20px;
+           padding-right:20px;
+           margin-top:40px;    
+           text-align:center; 
+           margin-bottom:40px;
+        }     
+
+          .loginf i{
+             font-size:70px;
+             color:dodgerblue;
+             animation:reset 1.5s linear infinite;
+             margin-bottom:15px;
+          }  
+
+          @keyframes reset{
+              from{
+                color:black;
+              }   
+
+              to{
+                color:dodgerblue;
+              }
+          }
+
+          .loginf input{
+           width:100%;
+           border:1px solid grey;
+           margin-top:7px;
+           padding:13px;
+        }  
+
+        .loginf input[type='email']:focus {
+              border-color:dodgerblue;
+        }
+
+        .loginf button{
+             padding:15px;
+             border:none;
+             border-radius:5px; 
+             color:white;
+             background-color:dodgerblue;
+             margin-top:13px;
+             width:100%; 
+             font-weight:bold;
+             font-size:17px;
+        }   
+
+        @media only screen and (max-width:600px) {
+          .loginf{ 
+           margin-left:20px;
+           margin-right:20px; 
+        }  
+    }
+    </style>
+</head>
+<body> 
+    
+
+     	<!-- Preloader -->
+		<%- include('../partials/preloader.ejs') %>
+    <!-- End Preloader -->
+ 
+
+<!-- Header Area -->
+<%- include('../partials/header.ejs') %>
+<!-- End Header Area -->
+
+<!-- Breadcrumbs -->
+<div class="breadcrumbs overlay">
+  <div class="container">
+    <div class="bread-inner">
+      <div class="row">
+        <div class="col-12">
+          <h2>Set New Password</h2>
+          <ul class="bread-list">
+            <li><a href="/">Home</a></li>
+            <li><i class="icofont-simple-right"></i></li>
+            <li class="active">Set New Password</li> 
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Breadcrumbs -->
+
+  
+ 
+
+    <div theuser ='<%=ouser._id%>' class="loginf">
+        <form id="reset">Enter new password and click on reset button to continue</button> </p>
+        <input id="newpass" type="password" required>
+        <p id="errsignup"></p> 
+        <input id="confirmpass" type="password" required>  
+        <p id="twins"></p>
+        <button class='rese'>Reset</button>
+      </form>
+       </div>  
+       <%- include('../partials/footer.ejs'); %>
+
+       <script>  
+        
+  var newpass = document.getElementById('newpass');
+  var confirmpass = document.getElementById('confirmpass');
+  var errsignup = document.getElementById('errsignup');
+  var twins = document.getElementById('twins');
+  var resee = document.querySelector('.rese');
+
+       newpass.onkeyup = function() {
+                    
+                    if(newpass.value.search(/[a-z]/) < 0){
+                        errsignup.innerHTML = 'incomplete!, password must contain lowercase character';
+                        errsignup.style.color = 'red';
+                        errsignup.style.textAlign = 'center';
+                        errsignup.style.marginTop = '7px';
+                        errsignup.style.fontWeight = 'bold';
+                        errsignup.style.fontSize = '16px'; 
+                        errsignup.style.fontFamily = 'helvetica';
+                    }   
+    
+                    
+    
+                      
+                   else if(newpass.value.search(/[A-Z]/) < 0){
+                        errsignup.innerHTML = 'incomplete!, password must contain uppercase character';
+                        errsignup.style.color = 'red';
+                        errsignup.style.textAlign = 'center';
+                        errsignup.style.marginTop = '7px';
+                        errsignup.style.fontWeight = 'bold';
+                        errsignup.style.fontSize = '16px'; 
+                        errsignup.style.fontFamily = 'helvetica';
+                    }     
+    
+                    else if(newpass.value.search(/[0-9]/) < 0){
+                        errsignup.innerHTML = 'invalid!, password must contain number';
+                        errsignup.style.color = 'red';
+                        errsignup.style.textAlign = 'center';
+                        errsignup.style.marginTop = '7px';
+                        errsignup.style.fontWeight = 'bold';
+                        errsignup.style.fontSize = '16px'; 
+                        errsignup.style.fontFamily = 'helvetica';
+                    }  
+    
+                    else if(newpass.value.search(/[!@#^&*$£%]/) < 0){
+                        errsignup.innerHTML = 'password must contain at least one symbol';
+                        errsignup.style.color = 'red';
+                        errsignup.style.textAlign = 'center';
+                        errsignup.style.marginTop = '7px';
+                        errsignup.style.fontWeight = 'bold'; 
+                        errsignup.style.fontSize = '16px';
+                        errsignup.style.fontFamily = 'helvetica';
+                    } 
+     
+    
+    
+                     
+                    else if(newpass.value.length < 8){
+                        errsignup.innerHTML = 'oops!, password is too short and weak';
+                        errsignup.style.color = 'red';
+                        errsignup.style.textAlign = 'center';
+                        errsignup.style.marginTop = '7px';
+                        errsignup.style.fontWeight = 'bold';
+                        errsignup.style.fontSize = '16px'; 
+                        errsignup.style.fontFamily = 'helvetica';
+                    }  
+    
+                    else if(newpass.value.length > 24){
+                        errsignup.innerHTML = 'oops!, password is too long';
+                        errsignup.style.color = 'red';
+                        errsignup.style.textAlign = 'center';
+                        errsignup.style.marginTop = '7px';
+                        errsignup.style.fontWeight = 'bold';
+                        errsignup.style.fontSize = '16px'; 
+                        errsignup.style.fontFamily = 'helvetica';
+                    } 
+    
+    
+    
+                     else{
+                        errsignup.innerHTML = 'Password is strong';
+                        errsignup.style.color = 'green';
+                        errsignup.style.textAlign = 'center';
+                        errsignup.style.marginTop = '7px';
+                        errsignup.style.fontWeight = 'bold';
+                        errsignup.style.fontSize = '16px'; 
+                        errsignup.style.fontFamily = 'helvetica';
+                     } 
+     
+             };     
+    
+    
+                     confirmpass.onkeyup = function() {
+                        errsignup.innerHTML = '';
+                        if(newpass.value !== confirmpass.value){
+                           twins.innerHTML = 'Fields must be of same value'; 
+                        twins.style.color = 'red';
+                        twins.style.textAlign = 'center';
+                        twins.style.marginTop = '7px';
+                        twins.style.fontWeight = 'bold';
+                      twins.style.fontSize = '16px'; 
+                        twins.style.fontFamily = 'helvetica';
+                        }  
+    
+                        else{
+     
+                           twins.innerHTML = 'perfect';
+                        twins.style.color = 'green';
+                        twins.style.textAlign = 'center';
+                        twins.style.marginTop = '7px';
+                        twins.style.fontWeight = 'bold';
+                      twins.style.fontSize = '16px';
+                      mup.disabled = false;
+                        mup.style.opacity = '2';
+                        twins.style.fontFamily = 'helvetica';
+                            
+                        } 
+                    }
+
+          var rst = document.getElementById('reset');   
+          rst.addEventListener('submit', async (vm)=>{
+               vm.preventDefault();  
+               resee.innerHTML = 'Resetting..';
+               const theUser = document.querySelector('.loginf');
+               const userid = theUser.getAttribute('theuser');
+           const dataa = {
+                 regpass : confirmpass.value,
+           }   
+
+
+          try{
+           const resp = await fetch(`/submitpass/${userid}`, {
+            body : JSON.stringify(dataa),
+            method : 'put',
+            headers : {
+                  'Content-Type' : 'application/json',
+                  Accept : 'application/json',
+            },
+           });
+
+           if(!resp.ok){
+             throw resp;
+           }  
+            resee.innerHTML = 'Reset';
+            alert('Password updated successfully , please login with your new password');
+       window.location.href = '/login';
+        }
+
+        catch(err){
+           resee.innerHTML = 'Reset';
+            const error = await err.text();
+            alert(error); 
+        }
+        
+        });
+       </script>
+     
+</body>
+</html>
