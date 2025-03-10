@@ -94,7 +94,7 @@
 										 <% if(!user) { %> 
 											<a href="/registration" class="btn">Join Us</a>
 										 <% } %>	 
-										 <a id="donate" href="#" class="btn primary">Donate</a>
+										 <a id="donatee" href="" class="btn primary">Donate</a>
 										
 									</div>
 								</div>
@@ -875,10 +875,10 @@
 
 
 			document.addEventListener("DOMContentLoaded", function() {
-    var donateButton = document.getElementById('donate');
-    if (donateButton) { 
-		donateButton.preventDefault();
-        donateButton.addEventListener('click', function() {
+    var donateButton = document.getElementById('donatee');
+    if (donateButton) {  
+        donateButton.addEventListener('click', function(event) { 
+			event.preventDefault();
             document.getElementById('donationModal').style.display = 'block';
         });
     }
