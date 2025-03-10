@@ -439,7 +439,17 @@ app.post('/logino', async (req, res)=>{
  
 app.get('/reset-password', (req,res)=>{
   res.render('./pages/fp');
-}); 
+});   
+
+
+
+//log out user
+app.get('/logout', (req, res)=>{ 
+  res.clearCookie('authToken');
+ const user = res.locals.user;   
+  res.redirect('/login');
+});
+
 
 
 
