@@ -730,23 +730,48 @@ app.post('/upldpfp', upload.single('profilePicture'), async (req,res)=>{
   }
 }); 
 
- 
-//handle contacting action
-app.post('/postcontact', async (req,res)=>{
-  const condata = req.body; 
+  
+//handle contacting action  
+
+app.post('/postcontact', async (req, res) => {
+  const condata = req.body;
   console.log(condata); 
-  console.log(req.body);
 
-  try{
-        await ContactDb.create(condata);
-        res.status(200).send('Message Sent Successfully');
-  } 
+  const transporter = nodemailer.createTransport({
+    host: 'smtp-relay.sendinblue.com',
+    port: 587,
+    auth: {
+      user: process.env.SMTP_USERNAME,
+      pass: process.env.SMTP_PASS,
+    },
+  });
+  
+   const reportingemail = ['alexaroh@yahoo.com', 'upuiireland@gmail.com', 'victoremmy1876@gmail.com'];
+  // Email content sent to your internal mailbox
+  const mailOptions = {
+    from: 'upuiireland@gmail.com',
+    to: reportingemail.join(','),
+    subject: `New Contact Form Submission: ${condata.sendersubject}`,
+    html: `
+      <h2>New Contact Form Message</h2>
+      <p><strong>Name:</strong> ${condata.sendername}</p>
+      <p><strong>Phone:</strong> ${condata.senderphone}</p>
+      <p><strong>Email:</strong> ${condata.senderemail}</p>
+      <p><strong>Subject:</strong> ${condata.sendersubject}</p>
+      <p><strong>Message:</strong><br>${condata.sendermessage}</p>
+    `,
+  };
 
-   catch(err){
-      res.status(400).send('Error sending message'); 
-      console.log(err);
-   }
-});   
+  try {
+    await ContactDb.create(condata); 
+    await transporter.sendMail(mailOptions); // Send email
+    res.status(200).send('Message Sent Successfully');
+  } catch (err) {
+    console.error(err);
+    res.status(400).send('Error sending message');
+  }
+});
+
  
 
 
