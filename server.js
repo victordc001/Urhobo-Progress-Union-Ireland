@@ -32,7 +32,7 @@
   import session from 'express-session'; 
   import passport from'passport';
   import passportLocal from 'passport-local';
-  //const LocalStrategy = passportLocal.Strategy;
+   //const LocalStrategy = passportLocal.Strategy;
   import { Strategy as LocalStrategy } from 'passport-local';
 import passportLocalMongoose from 'passport-local-mongoose';
 import { ensureLoggedIn } from 'connect-ensure-login';
